@@ -15,6 +15,8 @@ _/\      _
     \/\/
     
 '''
+
+
 class CountValleys():
     def __init__(self):
         n = 12
@@ -24,25 +26,26 @@ class CountValleys():
         print(result)
 
     def Count(self, n, s):
-        val_count = 0
-        cur_alt = 0
+        val_count = 0  # count of valleys
+        cur_alt = 0  # current altitude i.e sea level
 
-        in_valley = 0
+        in_valley = 0  # currently inside a valley flag
 
         for i in range(0, n):
             step = s[i]
-            if (step == 'U'):
+            if (step == 'U'):  # if step up increment altitude
                 cur_alt += 1
             else:
-                cur_alt -= 1
+                cur_alt -= 1  # else step down decrement altitude
 
+            # if inside a velley and incremented altitude is sea level, count as valley
             if (in_valley == 1 and cur_alt == 0):
                 val_count += 1
 
-            if (cur_alt < 0):
+            if (cur_alt < 0):  # if altitude under sea level flag as inside valley
                 in_valley = 1
             else:
-                in_valley = 0
+                in_valley = 0  # else not inside valley
 
         return val_count
 
